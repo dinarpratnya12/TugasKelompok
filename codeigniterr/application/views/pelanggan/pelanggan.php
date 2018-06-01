@@ -10,7 +10,7 @@
 	<h1>Pelanggan</h1>
 	<a href="<?php echo base_url('pelanggan/tambah') ?>" class="btn btn-primary mb-3">Tambah</a>
 
-	<!-- File Header -->
+
 	<table class="table table-striped table-bordered" width="100%" id="example">
 		<thead>
 			<tr>
@@ -27,15 +27,15 @@
 			<?php foreach ($getData as $key => $value): ?>
 				<tr>
 					<!-- Sesuaikan Column Table -->
-					<td><?php echo $value['id_pelanggan'] ?></td>
-					<td><?php echo $value['nama_pelanggan'] ?></td>
-					<td><?php echo $value['email'] ?></td>
-					<td><?php echo $value['alamat'] ?></td>
-					<td><?php echo $value['nomor_tlp'] ?></td>
+					<td><?= $value->id_pelanggan ?></td>
+					<td><?= $value->nama_pelanggan ?></td>
+					<td><?= $value->email ?></td>
+					<td><?= $value->alamat ?></td>
+					<td><?= $value->nomor_tlp ?></td>
 					<td>
 						<!-- --AKSI-- -->
-						<a href="<?php echo base_url('pelanggan/ubah/'.$value['id']) ?>" class="btn btn-sm btn-success">Ubah</a>
-						<a href="<?php echo base_url('pelanggan/hapus/'.$value['id']) ?>" class="btn btn-sm btn-danger">Hapus</a>
+						<a href="<?= base_url('pelanggan/ubah/'.$value->id_pelanggan) ?>" class="btn btn-sm btn-success">Ubah</a>
+						<a href="<?= base_url('pelanggan/hapus/'.$value->id_pelanggan) ?>" class="btn btn-sm btn-danger">Hapus</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

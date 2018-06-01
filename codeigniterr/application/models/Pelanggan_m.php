@@ -5,19 +5,8 @@ class Pelanggan_m extends CI_Model {
 
 	public function getData()
 	{
-		//untuk select column
-		$this->db->select('*');
-		//untuk from table pelanggan
-		$this->db->from("pelanggan");
-		//$get eksekusi fungsi select
-		//hasil eksesusi = "select * from pelanggan"
-
-		//menjoinkan category
-		// $this->db->join("category","pelanggan.fk_id_category=category.id_category",'left');
-		
-		$query = $this->db->get();
-		//untuk merubah table menjadi array
-		return $query->result_array();
+		$query = $this->db->get('pelanggan');
+		return $query->result();
 	}
 
 	// public function getCategory()
@@ -40,13 +29,12 @@ class Pelanggan_m extends CI_Model {
 		$data = array(
 			/* 'id' yang dikiri harus sama seperti di table
 			'id' yang dikanan harus menurut name inputnya */
-			'id_pelanggan' => ' ',
 			'nama_pelanggan' => $this->input->post('nama_pelanggan'),
 			'pass_pelanggan' => $this->input->post('pass_pelanggan'),
 			'email' => $this->input->post('email'),
 			'alamat' => $this->input->post('alamat'),
 			'nomor_tlp' => $this->input->post('nomor_tlp'),
-			'level' => 'pelanggan');
+			'level' => $this->input->post('role'));
 			$this->db->insert('pelanggan',$data);
 		/* jika semua sama sperti di table
 		gunakan versi simple seprti berikut */

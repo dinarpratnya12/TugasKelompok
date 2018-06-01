@@ -20,7 +20,7 @@ class Pelanggan extends CI_Controller {
 		terlah direturn pada fungsi getData() pada Pelanggan_m */
 		$data['getData'] = $this->Pelanggan_m->getData();
 		// memanggil view 'Pelanggan/Pelanggan.php' dan diberi variable $data
-		$this->load->view('pelanggan/pelanggan.php',$data);
+		$this->load->view('pelanggan/pelanggan',$data);
 	}
 
 	public function tambah()
@@ -33,11 +33,13 @@ class Pelanggan extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('nama_pelanggan','Name','required');
-		$this->form_validation->set_rules('pass_pelanggan','Price','required');
-		$this->form_validation->set_rules('email','Brand','required');
-		$this->form_validation->set_rules('Alamat','Brand','required');
-		$this->form_validation->set_rules('nomor_tlp','Brand','required');
+		$this->form_validation->set_rules('nama_pelanggan','Nama','required');
+		$this->form_validation->set_rules('pass_pelanggan','Sandi','required');
+		$this->form_validation->set_rules('email','Email','required');
+		$this->form_validation->set_rules('alamat','Alamat','required');
+		$this->form_validation->set_rules('nomor_tlp','Telepon','required');
+		$this->form_validation->set_rules('role','Role','required');
+		
 
 		// intinya membuat warna error menjadi merah :D
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -48,11 +50,12 @@ class Pelanggan extends CI_Controller {
 		// if jika kita belum melakukan submit
 		if($this->form_validation->run()==FALSE){
 			//menampilkan view 'Pelanggan/tambah.php'
-			$this->load->view('login'); 
+			$this->load->view('pelanggan/tambah'); 
 		}
 		// jika kita sudah melalukan submit
 		else{
 			//memanggil fungsi insertData pada model
+			
 			$this->Pelanggan_m->insertData();
 			//redirect / pergi ke halaman 'Pelanggan'
 			redirect('Pelanggan');
